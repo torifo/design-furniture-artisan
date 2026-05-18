@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BURL — Workshop Catalogue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root { --bg:#F5EDDE; --fg:#1F1810; --rust:#8B3829; --moss:#485C38; --border:#C8BAA2; --muted:#6B5C4A; --font-serif:'DM Serif Display', Georgia, serif; --font-mono:'IBM Plex Mono', monospace; --font-sans:'Outfit', sans-serif; }
+    html { scroll-behavior:smooth; text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; }
+    body { background:var(--bg); color:var(--fg); font-family:var(--font-sans); line-height:1.65; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; } img { display:block; width:100%; height:100%; object-fit:cover; filter:sepia(.22) contrast(1.02); }
+    .masthead { padding:1rem clamp(1rem,4vw,3rem) 1.25rem; border-bottom:2px solid var(--fg); }
+    .mast-top { display:flex; justify-content:space-between; gap:1rem; font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--border); padding-bottom:.65rem; }
+    .mast-main { display:grid; grid-template-columns:1fr auto 1fr; align-items:end; gap:1rem; padding-top:.7rem; }
+    .brand { font-family:var(--font-serif); font-size:clamp(4rem,14vw,13rem); line-height:.78; letter-spacing:-.04em; text-align:center; }
+    .mast-main p { font-family:var(--font-mono); font-size:.72rem; color:var(--muted); }
+    .mast-main p:last-child { text-align:right; }
+    .hero-editorial { padding:2rem clamp(1rem,4vw,3rem); display:grid; grid-template-columns:8fr 4fr; grid-template-areas:"main quote" "main suba" "subb suba"; gap:1rem; border-bottom:1px solid var(--border); }
+    .tile { border:1px solid var(--border); background:#eadcc8; overflow:hidden; }
+    .main-img { grid-area:main; min-height:620px; }
+    .quote { grid-area:quote; padding:1.4rem; display:flex; flex-direction:column; justify-content:space-between; font-family:var(--font-serif); font-size:clamp(2rem,4vw,4rem); line-height:.95; color:var(--rust); }
+    .sub-a { grid-area:suba; min-height:410px; }
+    .sub-b { grid-area:subb; min-height:260px; }
+    .section { padding:4rem clamp(1rem,4vw,3rem); border-bottom:1px solid var(--border); }
+    h2 { font-family:var(--font-serif); font-size:clamp(3rem,8vw,8rem); line-height:.85; letter-spacing:-.03em; margin-bottom:2rem; }
+    .process-grid { display:grid; grid-template-columns:1fr 1.1fr 1fr; gap:1rem; align-items:start; }
+    .process-grid p { color:var(--muted); }
+    .process-img { min-height:420px; border:1px solid var(--border); overflow:hidden; }
+    .catalog-list { border-top:2px solid var(--fg); font-family:var(--font-mono); }
+    .row { display:grid; grid-template-columns:90px 1.4fr 1fr 120px 140px 120px; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--border); transition:background .15s; }
+    .row:hover { background:rgba(139,56,41,.08); }
+    .row.head { color:var(--rust); text-transform:uppercase; font-size:.72rem; }
+    .makers { background:var(--moss); color:var(--bg); }
+    .maker-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
+    .maker { display:grid; grid-template-columns:.8fr 1fr; gap:1.5rem; align-items:end; }
+    .maker-img { aspect-ratio:4/5; overflow:hidden; border:1px solid rgba(245,237,222,.28); }
+    .maker h3 { font-family:var(--font-serif); font-size:2.6rem; line-height:.9; margin-bottom:.8rem; }
+    .maker p { color:rgba(245,237,222,.72); }
+    .spec-sheet { font-family:var(--font-mono); background:#eadcc8; border:1px solid var(--border); padding:1.25rem; display:grid; grid-template-columns:repeat(2,1fr); gap:.8rem 2rem; }
+    .repair-note { margin-top:2rem; display:grid; grid-template-columns:1fr 1fr 1fr; border:1px solid var(--border); border-left:0; font-family:var(--font-mono); }
+    .repair-note div { border-left:1px solid var(--border); padding:1rem; min-height:140px; background:#eadcc8; }
+    .repair-note b { display:block; color:var(--rust); margin-bottom:.6rem; }
+    .simple { padding:2rem clamp(1rem,4vw,3rem); display:flex; justify-content:space-between; color:var(--muted); font-family:var(--font-mono); font-size:.78rem; }
+    .reveal { opacity:0; transition:opacity .6s; } .reveal.in { opacity:1; }
+    @media (max-width:820px) { .mast-main,.hero-editorial,.process-grid,.maker-grid,.maker,.spec-sheet,.repair-note{grid-template-columns:1fr}.mast-main p,.mast-main p:last-child{text-align:center}.hero-editorial{grid-template-areas:"main" "quote" "suba" "subb"}.main-img{min-height:420px}.row{grid-template-columns:1fr 1fr; gap:.4rem}.row.head{display:none}.simple{display:block} }
+  </style>
+</head>
+<body>
+  <header class="masthead"><div class="mast-top"><span>Issue 001 / Spring 2026</span><span>Made in Hida, Japan</span></div><div class="mast-main"><p>Maker: Naruse Woodworks<br>Established 1984</p><h1 class="brand">BURL</h1><p><a href="#catalog">Catalog</a> / <a href="#makers">Makers</a><br>Fictional workshop</p></div></header>
+  <main>
+    <section class="hero-editorial"><div class="tile main-img"><img src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?auto=format&fit=crop&w=1200&q=80" alt="Wood workshop table"></div><blockquote class="tile quote">The mark of the hand is not a flaw.<span>It is the receipt.</span></blockquote><div class="tile sub-a"><img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80" alt="Wood chair detail"></div><div class="tile sub-b"><img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=900&q=80" alt="Timber texture"></div></section>
+    <section class="section process"><h2>Three<br>Hands<br>Before<br>Finish.</h2><div class="process-grid"><p>木を読む。節、割れ、反りを欠点ではなく構造として見る。BURLは、木の瘤が作る不規則な美しさをそのまま家具へ残す架空工房です。</p><div class="process-img reveal"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80" alt="Workshop process"></div><p>削る、組む、磨く。工程の速度を上げず、注文書のように仕様を明記することで、クラフトの誠実さをUIに変えます。</p></div></section>
+    <section class="section catalog" id="catalog"><h2>Order<br>Catalogue</h2><div class="catalog-list reveal"><div class="row head"><span>No.</span><span>Name</span><span>Material</span><span>Price</span><span>Lead Time</span><span>Size</span></div><div class="row"><span>BR-01</span><span>Burl Dining Chair</span><span>Oak / paper cord</span><span>¥86,000</span><span>8 weeks</span><span>W480 D520</span></div><div class="row"><span>BR-02</span><span>Stump Low Table</span><span>Walnut burl</span><span>¥132,000</span><span>10 weeks</span><span>W900 D620</span></div><div class="row"><span>BR-03</span><span>Joinery Bench</span><span>Chestnut</span><span>¥118,000</span><span>9 weeks</span><span>W1400 D380</span></div><div class="row"><span>BR-04</span><span>Tool Cabinet</span><span>Cedar / iron</span><span>¥164,000</span><span>12 weeks</span><span>W880 H1280</span></div></div></section>
+    <section class="section makers" id="makers"><h2>Makers</h2><div class="maker-grid"><article class="maker reveal"><div class="maker-img"><img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=800&q=80" alt="Maker portrait"></div><div><h3>Koji<br>Naruse</h3><p>飛騨で40年、椅子の構造と修理を専門にする木工職人。見えない接合部に時間をかける。</p></div></article><article class="maker reveal"><div class="maker-img"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Maker portrait"></div><div><h3>Mina<br>Sakai</h3><p>仕上げと検品を担当。木目、手触り、経年変化を製品ごとに記録する。</p></div></article></div></section>
+    <section class="section"><h2>Spec<br>Sheet</h2><div class="spec-sheet reveal"><span>JOINT: MORTISE / TENON</span><span>FINISH: OIL WAX</span><span>WOOD: DOMESTIC HARDWOOD</span><span>REPAIR: AVAILABLE</span><span>VARIATION: ACCEPTED</span><span>STATUS: FICTIONAL DESIGN STUDY</span></div><div class="repair-note reveal"><div><b>01 REPAIR</b>座面張り替え、脚部再調整、再研磨に対応。</div><div><b>02 TAKE BACK</b>破損品は工房へ戻し、部材として再利用する設計。</div><div><b>03 RECORD</b>製品ごとに木材、工程、仕上げ日を記録する。</div></div></section>
+  </main>
+  <footer class="simple"><span>© 2026 BURL WORKSHOP</span><span>Fictional artisan furniture catalogue</span></footer>
+  <script>
+    const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold:.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
