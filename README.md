@@ -61,9 +61,9 @@ python3 -m http.server 8080
 
 このリポジトリは **furniture design research series** の一作です。
 
-| Theme | Brand | Aesthetic | Persona |
-|-------|-------|-----------|---------|
-| [nordic](../nordic/) | HVILE | 北欧オーガニック | 30–45代、素材重視の住まい手 |
-| [luxury](../luxury/) | VELA | ラグジュアリー・アトリエ | 40–60代、ラグジュアリー層 |
-| **artisan** | **BURL** | **職人工房・カタログ** | **25–45代、クラフト志向** |
-| [urban](../urban/) | BLOC | アーバン・グラフィック | 20–35代、都市生活者 |
+| Theme | Brand | Aesthetic | Persona | Site |
+|-------|-------|-----------|---------|------|
+| nordic | HVILE | 北欧オーガニック | 30–45代、素材重視の住まい手 | [design.furniture-nordic.riumu.net](https://design.furniture-nordic.riumu.net/) |
+| luxury | VELA | ラグジュアリー・アトリエ | 40–60代、ラグジュアリー層 | [design.furniture-luxury.riumu.net](https://design.furniture-luxury.riumu.net/) |
+| **artisan** | **BURL** | **職人工房・カタログ** | **25–45代、クラフト志向** | [design.furniture-artisan.riumu.net](https://design.furniture-artisan.riumu.net/) |
+| urban | BLOC | アーバン・グラフィック | 20–35代、都市生活者 | [design.furniture-urban.riumu.net](https://design.furniture-urban.riumu.net/) |
